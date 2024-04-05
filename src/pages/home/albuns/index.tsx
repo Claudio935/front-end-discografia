@@ -51,7 +51,7 @@ const Albuns = ({ data }: Albuns) => {
               hover:bg-orange-800
               hover:text-white'
                             onClick={(e) => { handleClick(e, item.id) }}>
-                            <p className='font-bold text-xs md:text-base' >Album: {item.nome}</p>
+                            <p className='font-bold text-xs md:text-base' >Álbum: {item.nome}</p>
                             <div className='
                             flex 
                             flex-row 

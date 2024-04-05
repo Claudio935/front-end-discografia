@@ -95,7 +95,7 @@ function Home() {
             justify-center 
             items-center '>
                     <h1 className='font-bold text-4xl '>Sucessos de Tião Carreiro e Pardinho</h1>
-                    <h1 className='font-medium text-2xl '>Escolha a sua musica preferida </h1>
+                    <h1 className='font-medium text-2xl '>Escolha a sua música preferida </h1>
                 </div>
 
             </div>

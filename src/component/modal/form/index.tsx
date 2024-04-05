@@ -23,6 +23,10 @@ export const FormCreateAlbum = () => {
 
 
     const handleCadastrar = () => {
+        if (formData.nome.length === 0) {
+            alert('preencha todos os campos')
+            return
+        }
         setLoading(true)
         api.post('/api/album', formData)
             .then(() => {
@@ -103,8 +107,18 @@ export const FormCreateFaixa = () => {
 
 
     const handleCadastrar = () => {
+        if (formData.nome.length === 0) {
+            alert('preencha o campo do nome')
+            return
+        }
+        if (formData.duracao.length === 0) {
+            alert('preencha o campo de duração')
+            return
+        }
+
+
         setLoading(true)
-        console.log(formData)
+
 
         api.post('/api/faixa', formData)
             .then(() => alert('Faixa adicionado com sucesso'))
