@@ -33,11 +33,12 @@ function Home() {
 
 
     useEffect(() => {
-
+        setSearchData([])
         selectType === 'album' ?
             refetchAlbuns()
             :
             refetchFaixas()
+
 
     }, [selectType])
 
@@ -50,17 +51,13 @@ function Home() {
                 :
                 setSearchData(music.albuns)
 
-
         }
 
         const oldData: AlbumOrFaixa = selectType === 'album' ? music.albuns : music.faixas
 
         const newData: AlbumOrFaixa = oldData.filter((item) => item.nome.includes(searchText))
 
-
         setSearchData(newData)
-
-
     }
     if (loading) {
         return (
