@@ -55,7 +55,10 @@ function Home() {
 
         const oldData: AlbumOrFaixa = selectType === 'album' ? music.albuns : music.faixas
 
-        const newData: AlbumOrFaixa = oldData.filter((item) => item.nome.includes(searchText))
+        const newData: AlbumOrFaixa = oldData.filter((item) =>
+            item.nome
+                .toLowerCase()
+                .includes(searchText))
 
         setSearchData(newData)
     }

@@ -35,7 +35,9 @@ const AlbumPage = () => {
         }
         const oldFaixas = music.faixas
 
-        const newFaixas = oldFaixas.filter((item) => item.nome.includes(searchText))
+        const newFaixas = oldFaixas.filter((item) => item.nome
+            .toLowerCase()
+            .includes(searchText))
 
         setSearchFaixas(newFaixas)
     }
