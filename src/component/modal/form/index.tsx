@@ -123,7 +123,7 @@ export const FormCreateFaixa = () => {
 
         setLoading(true)
 
-        console.log(formData.album_id)
+
 
         api.post('/api/faixa', formData)
             .then(() => alert('Faixa adicionado com sucesso'))
@@ -175,13 +175,14 @@ export const FormCreateFaixa = () => {
                         }))} />
             <Select
                 name={'album_id'}
+                defaultValue={'selected'}
                 onChange={(event) =>
                     setFormdata(
                         (formData) => ({
                             ...formData,
                             [event.target.name]: event.target.value
                         }))} >
-                <option disabled >Selecione uma opção</option>
+                <option disabled value={'selected'}>Selecione uma opção</option>
                 {
                     music.albuns.map((item) =>
                         <option key={item.id} value={item.id}>
