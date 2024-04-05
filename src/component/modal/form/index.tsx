@@ -91,17 +91,17 @@ export const FormCreateAlbum = () => {
 interface FaixaFormDataType {
     nome: string
     duracao: string
-    'album_id': number | null
+    'album_id': string | null
 }
 
 export const FormCreateFaixa = () => {
-    const { music, refetchAlbum, refetchAlbuns } = useContext(MusicContext) as MusicContextType
+    const { music, refetchAlbum, refetchFaixas } = useContext(MusicContext) as MusicContextType
     const { id = null } = useParams()
 
     const [formData, setFormdata] = useState<FaixaFormDataType>({
         nome: '',
         duracao: '',
-        'album_id': id ? parseInt(id) : null,
+        'album_id': id ? id : null,
     })
     const [loading, setLoading] = useState(false)
 
@@ -115,10 +115,15 @@ export const FormCreateFaixa = () => {
             alert('preencha o campo de duração')
             return
         }
+        if (!formData.album_id) {
+            alert('preencha o campo de duração')
+            return
+        }
 
 
         setLoading(true)
 
+        console.log(formData.album_id)
 
         api.post('/api/faixa', formData)
             .then(() => alert('Faixa adicionado com sucesso'))
@@ -128,7 +133,7 @@ export const FormCreateFaixa = () => {
                 if (id) {
                     refetchAlbum(id)
                 } else {
-                    refetchAlbuns()
+                    refetchFaixas()
                 }
                 setLoading(false)
             })
@@ -171,12 +176,12 @@ export const FormCreateFaixa = () => {
             <Select
                 name={'album_id'}
                 onChange={(event) =>
-
                     setFormdata(
                         (formData) => ({
                             ...formData,
                             [event.target.name]: event.target.value
                         }))} >
+                <option disabled >Selecione uma opção</option>
                 {
                     music.albuns.map((item) =>
                         <option key={item.id} value={item.id}>
