@@ -51,7 +51,10 @@ export const RoundedDeleteButton: React.FC<ButtonDeleteProps> =
 
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const deleteIcon = require('../../assets/icon/delete.png')
-        const { refetchAlbuns, refetchAlbum } = useContext(MusicContext) as MusicContextType
+        const {
+            refetchAlbuns,
+            refetchAlbum,
+            refetchFaixas } = useContext(MusicContext) as MusicContextType
         const { id } = useParams()
         const deleteFaixaOrAlbum = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.stopPropagation()
@@ -66,7 +69,10 @@ export const RoundedDeleteButton: React.FC<ButtonDeleteProps> =
                         refetchAlbum(id)
                         return
                     }
-                    refetchAlbuns()
+                    deleteType === 'album' ?
+                        refetchAlbuns()
+                        :
+                        refetchFaixas()
 
                 })
         }
