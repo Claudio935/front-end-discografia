@@ -48,8 +48,7 @@ function Home() {
             selectType === 'faixa' ?
                 setSearchData(music.faixas)
                 :
-                selectType === 'album'
-            setSearchData(music.albuns)
+                setSearchData(music.albuns)
 
 
         }
@@ -117,7 +116,9 @@ function Home() {
 
                     onChange={(e) => setSelectType(
                         e.target.value as SelectType
-                    )}>
+                    )}
+                    value={selectType}
+                >
                     <option value={'album'} >Album</option>
                     <option value={'faixa'}>Faixa</option>
                 </Select>
